@@ -208,7 +208,7 @@
     }
     .main section .page_container {
       position: relative;
-      top: 25%;
+      top: 10%;
       margin: 0 auto 0;
       max-width: 950px;
       z-index: 3;
