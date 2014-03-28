@@ -10,12 +10,13 @@ jQuery.fn.loadRepositories = function(username) {
         var repos = data.data; // JSON Parsing
        // sortByName(repos);    
      console.log(repos);
-        var list = $('<dl/>');
+        var list = $('<div/>');
         target.empty().append(list);
         $(repos).each(function() {
             if (this.name != (username.toLowerCase()+'.github.com')) {
-                list.append('<dt><a href="'+ (this.homepage?this.homepage:this.html_url) +'">' + this.name + '</a> <em>'+(this.language?('('+this.language+')'):'')+'</em></dt>');
-                list.append('<dd>' + this.description +'</dd>');
+		list.append('');
+                list.append('<div class="card"><div><a href="'+ (this.homepage?this.homepage:this.html_url) +'">' + this.name + '</a> <em>'+(this.language?('('+this.language+')'):'')+'</em></div><div>' + this.description +'</div></div>');
+
             }
         });      
         
