@@ -128,3 +128,13 @@ width:80px;
 	.card .caption:empty {
 		border-top-style: hidden;
 	}
+#resume{
+margin:1.8em;
+padding-right:2em;
+}
+#summary{
+text-align:left;
+}
+#career{
+text-align:left;
+}
