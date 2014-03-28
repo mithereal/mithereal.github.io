@@ -1,0 +1,71 @@
+    html {
+      height: 100%;
+    }
+    body {
+      background: #E2E4E7;
+      padding: 0;
+      text-align: center;
+      font-family: 'open sans';
+      position: relative;
+      margin: 0;
+      height: 100%;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+    }
+    
+    h1, h2 {
+      width: 100%;
+      float: left;
+    }
+  
+    
+    header {
+      position: relative;
+      z-index: 10;
+    }
+  
+    .img{
+    height:80px;
+    width:80px;
+    }
+    #gravitar{
+    position:absolute;
+    left:1em;
+    top:7px;
+    }
+    #contact{
+    position:absolute;
+    right:4px;
+    bottom:3px;
+    color:#fff;
+    }
+	#header{
+		position:fixed;
+		height: 50px;
+		display:block;
+		width: 100%;
+		background: #333;
+		z-index:9;
+		text-align:center;
+		color: #f2f2f2;
+		padding: 15px 0 0 0;
+	}
+	
+	#header{
+		top:0px;
+	}
+
+
+#my-github-projects{
+
+}
+.fullPage-tooltip{
+background-color:#59505E;
+padding:5px;
+border:1px solid;
+border-color:white;
+border-radius:9px;
+}
