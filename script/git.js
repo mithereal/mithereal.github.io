@@ -57,7 +57,10 @@ jQuery.fn.loadRepositories = function(username) {
 	console.log(lang.length);
     for (var i=0;i<lang.length;i++)
     {
-		
+		if(lang[i] === null)
+		{
+			lang[i] = "Bash";
+		}
 	var width = Math.floor(Math.random() * 105);
 	if(i%2 ==0){
     $('#section0-runner').append('<div style="width:'+width+'px" class="codewall vertical">'+lang[i]+'</div>');
