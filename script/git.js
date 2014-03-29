@@ -55,18 +55,45 @@ jQuery.fn.loadRepositories = function(username) {
     function codewall($data){
 	lang=unique($data);
 	console.log(lang.length);
+	var lastwidth=0;
+	var maxwidth=100;
     for (var i=0;i<lang.length;i++)
     {
 		if(lang[i] === null)
 		{
 			lang[i] = "Bash";
 		}
-	var width = Math.floor(Math.random() * 105);
+	var width = Math.floor(Math.random() * maxwidth);
+	if(width+10 >= lastwidth)
+	{
+		var diff=width - lastwidth;
+		width = width + diff;
+		if(width + diff >= maxwidth || width + diff >= maxwidth){
+			if(diff < 10)
+			{
+				width=lastwidth -10
+				
+			}else{
+			width=width - diff;
+			}
+		}
+	}else{
+		var diff=width - lastwidth;
+		if( diff < 10){
+			width - 10;
+		}else{
+		width = width - diff; 
+		}
+		
+	}
+
+	
 	if(i%2 ==0){
     $('#section0-runner').append('<div style="width:'+width+'px" class="codewall vertical">'+lang[i]+'</div>');
 	}else{
 	$('#section0-runner').append('<div style="width:'+width+'px" class="codewall vertical">'+lang[i]+'</div>');
 	}
+	lastwidth=width;
     }
     
 	}
