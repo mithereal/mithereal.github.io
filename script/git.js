@@ -16,7 +16,7 @@ jQuery.fn.loadRepositories = function(username) {
      
         var list = $('<div/>');
         target.empty().append(list);
-         if(typeof repos != 'undefined')
+         if(typeof repos == 'undefined')
        {
 		   list.append('');
 		   list.append('<div class="card">Oops there was an error Please go to the <a href="https://github.com/mithereal?tab=repositories">Repositories</a> Instead<div></div>');
