@@ -1,6 +1,7 @@
     html {
     height: 100%;
     }
+    
     body {
     background: #E2E4E7;
     padding: 0;
@@ -21,7 +22,6 @@
     float: left;
     }
     
-    
     header {
     position: relative;
     z-index: 10;
@@ -31,17 +31,20 @@
     height:80px;
     width:80px;
     }
+    
     #gravitar{
     position:absolute;
     left:1em;
     top:7px;
     }
+    
     #contact{
     position:absolute;
     right:4px;
     bottom:3px;
     color:#fff;
     }
+    
 	#header{
     position:fixed;
     height: 50px;
@@ -58,10 +61,10 @@
     top:0px;
 	}
     
-    
     #my-github-projects{
     
     }
+    
     .fullPage-tooltip{
     background-color:#59505E;
     padding:5px;
@@ -69,6 +72,7 @@
     border-color:white;
     border-radius:9px;
     }
+    
     .siderunner{
     position:absolute;
     margin-left:1em;
@@ -120,26 +124,30 @@
     background-color: #444;
     border: 1px solid #888;
 	}
-    
+	
 	.card .caption {
     display: block;
     padding-top: 8px;
     border-top: 2px groove #888;
 	}
-    
+	
 	.card .caption:empty {
     border-top-style: hidden;
 	}
+	
     #resume{
     margin:1.8em;
     padding-right:2em;
     }
+    
     #summary{
     text-align:left;
     }
+    
     #career{
     text-align:left;
     }
+    
     #about-text{
     display:static;
     margin-left: 7em;
@@ -147,18 +155,17 @@
     text-align:left;
     color:#D4D0D0;
     }
+    
     #section0{
     position: relative;
     }
-    .codewall-l{ 
-color:green;
-width:0px;
+    
+    .codewall{ 
+    color:#F3F607;
+    padding: 4px;
+    margin: 4px;
     }
-    .codewall-r{ 
-    postition:absolute;
-color:green;
-width:120px;
-    }
+    
     .vertical{
     writing-mode:tb-rl;
     -webkit-transform:rotate(90deg);
@@ -167,7 +174,5 @@ width:120px;
     white-space:nowrap;
     display:block;
     bottom:0;
-    
     height:50px;
-   
-}
+    }
