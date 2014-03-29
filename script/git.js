@@ -71,7 +71,8 @@ jQuery.fn.loadRepositories = function(username) {
 		if(width + diff >= maxwidth || width + diff >= maxwidth){
 			if(diff < 10)
 			{
-				width=lastwidth -10
+				var rand=Math.floor(Math.random() * diff;
+				width=lastwidth -10 -diff;
 				
 			}else{
 			width=width - diff;
