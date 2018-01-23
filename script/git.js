@@ -8,33 +8,36 @@ jQuery.fn.loadRepositories = function(username) {
     var target = this;
     var languages =new Array();
     var wall = '';
-    var fetchuser = $.githubUser(username, function(data) {
 
-        var repos = data.data; // JSON Parsing
+    var fetchuser = function(username){
+       return $.githubUser(username, function(data) {
 
-        var sorted_repos = sortByDate(repos);
+            var repos = data.data; // JSON Parsing
 
-        var list = $('<div/>');
+            var sorted_repos = sortByDate(repos);
 
-        target.empty().append(list);
+            var list = $('<div/>');
 
-        if(repos.message == "API rate limit exceeded for 68.231.163.171. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)")
-        {
-            list.append('');
-            list.append('<div class="card">Oops there was an error Please go to the <a href="https://github.com/mithereal?tab=repositories">Repositories</a> Instead<div></div>');
-        }else{
-            $(sorted_repos.reverse()).each(function() {
+            target.empty().append(list);
 
-                if (this.name != (username.toLowerCase()+'.github.com')) {
-                    list.append('');
-                    list.append('<div class="card"><div><a href="'+ (this.homepage?this.homepage:this.html_url) +'">' + this.name + '</a> <em>'+(this.language?('('+this.language+')'):'')+'</em></div><div>' + this.description +'</div></div>');
-                    languages.push(this.language);
-                }
-            });
+            if(repos.message == "API rate limit exceeded for 68.231.163.171. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)")
+            {
+                list.append('');
+                list.append('<div class="card">Oops there was an error Please go to the <a href="https://github.com/mithereal?tab=repositories">Repositories</a> Instead<div></div>');
+            }else{
+                $(sorted_repos.reverse()).each(function() {
 
-            return languages;
-        }// Misc Error Handling Goes Here
-    });
+                    if (this.name != (username.toLowerCase()+'.github.com')) {
+                        list.append('');
+                        list.append('<div class="card"><div><a href="'+ (this.homepage?this.homepage:this.html_url) +'">' + this.name + '</a> <em>'+(this.language?('('+this.language+')'):'')+'</em></div><div>' + this.description +'</div></div>');
+                        languages.push(this.language);
+                    }
+                });
+
+                return languages;
+            }// Misc Error Handling Goes Here
+        });
+    };
 
     if(Array.isArray(username)){
         username.each(function(u) {
