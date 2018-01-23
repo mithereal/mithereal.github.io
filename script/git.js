@@ -1,44 +1,53 @@
 jQuery.githubUser = function(username, callback) {
    jQuery.getJSON('https://api.github.com/users/'+username+'/repos?callback=?',callback)
-}
+};
  
 jQuery.fn.loadRepositories = function(username) {
     this.html("<span>Querying GitHub for " + username +"'s repositories...</span>");
      
     var target = this;
     var languages =new Array();
-    
-    $.githubUser(username, function(data) {
-		
+    var wall = '';
+    var fetchuser = $.githubUser(username, function(data) {
+
         var repos = data.data; // JSON Parsing
 
         var sorted_repos = sortByDate(repos);
 
-
         var list = $('<div/>');
-        target.empty().append(list);
-         if(repos.message == "API rate limit exceeded for 68.231.163.171. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)")
-       {
-		   list.append('');
-		   list.append('<div class="card">Oops there was an error Please go to the <a href="https://github.com/mithereal?tab=repositories">Repositories</a> Instead<div></div>');
-	   }else{
-        $(sorted_repos.reverse()).each(function() {
-			
-            if (this.name != (username.toLowerCase()+'.github.com')) {
-				list.append('');
-                list.append('<div class="card"><div><a href="'+ (this.homepage?this.homepage:this.html_url) +'">' + this.name + '</a> <em>'+(this.language?('('+this.language+')'):'')+'</em></div><div>' + this.description +'</div></div>');
-                 languages.push(this.language);
-            }
-           
-        });      
-        codewall(languages);
-	} // if(typeof myVar != 'undefined')
-      
-   
-      }
-      );
 
-       function unique(array){
+        target.empty().append(list);
+
+        if(repos.message == "API rate limit exceeded for 68.231.163.171. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)")
+        {
+            list.append('');
+            list.append('<div class="card">Oops there was an error Please go to the <a href="https://github.com/mithereal?tab=repositories">Repositories</a> Instead<div></div>');
+        }else{
+            $(sorted_repos.reverse()).each(function() {
+
+                if (this.name != (username.toLowerCase()+'.github.com')) {
+                    list.append('');
+                    list.append('<div class="card"><div><a href="'+ (this.homepage?this.homepage:this.html_url) +'">' + this.name + '</a> <em>'+(this.language?('('+this.language+')'):'')+'</em></div><div>' + this.description +'</div></div>');
+                    languages.push(this.language);
+                }
+            });
+
+            return languages;
+        }// Misc Error Handling Goes Here
+    });
+
+    if(Array.isArray(username)){
+        username.each(function(u) {
+            wall = wall + fetchuser(u);
+        });
+
+    }else{
+        wall = fetchuser(username);
+    }
+
+    codewall(wall);
+
+    function unique(array){
        var uniques = [];
        $.each(array, function(i, el){
        if($.inArray(el, uniques) === -1) uniques.push(el);
@@ -110,4 +119,5 @@ jQuery.fn.loadRepositories = function(username) {
     }
     
 	}
+
 };
