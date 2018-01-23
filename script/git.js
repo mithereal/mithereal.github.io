@@ -9,8 +9,8 @@ jQuery.fn.loadRepositories = function(username) {
     var languages =new Array();
     var wall = '';
 
-    var fetchuser = function(username){
-       return $.githubUser(username, function(data) {
+    var fetchuser = function(n){
+       return $.githubUser(n, function(data) {
 
             var repos = data.data; // JSON Parsing
 
@@ -39,7 +39,6 @@ jQuery.fn.loadRepositories = function(username) {
         });
     };
 
-    console.log(fetchuser);
 
     if(Array.isArray(username)){
         username.each(function(u) {
