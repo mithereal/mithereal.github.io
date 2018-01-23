@@ -12,7 +12,9 @@ jQuery.fn.loadRepositories = function(username) {
 		
         var repos = data.data; // JSON Parsing
 
-        sortByDate(repos);
+        var sorted_repos = sortByDate(repos);
+
+        console.log(sorted_repos);
 
         var list = $('<div/>');
         target.empty().append(list);
