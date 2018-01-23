@@ -54,14 +54,6 @@ jQuery.fn.loadRepositories = function(username) {
        });
        return uniques;
        }
-	 
-    function sortByName(repos) {
-        var sorted = repos.sort(function(a,b) {
-        return a.name - b.name;
-       });
-
-        return sorted;
-    }
 
     function sortByDate(repos) {
         var sorted = repos.sort(function(a,b) {
