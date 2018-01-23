@@ -14,7 +14,6 @@ jQuery.fn.loadRepositories = function(username) {
 
         var sorted_repos = sortByDate(repos);
 
-        console.log(sorted_repos);
 
         var list = $('<div/>');
         target.empty().append(list);
@@ -23,7 +22,7 @@ jQuery.fn.loadRepositories = function(username) {
 		   list.append('');
 		   list.append('<div class="card">Oops there was an error Please go to the <a href="https://github.com/mithereal?tab=repositories">Repositories</a> Instead<div></div>');
 	   }else{
-        $(repos).each(function() {
+        $(sorted_repos).each(function() {
 			
             if (this.name != (username.toLowerCase()+'.github.com')) {
 				list.append('');
@@ -38,8 +37,7 @@ jQuery.fn.loadRepositories = function(username) {
    
       }
       );
-   
-       
+
        function unique(array){
        var uniques = [];
        $.each(array, function(i, el){
@@ -49,15 +47,18 @@ jQuery.fn.loadRepositories = function(username) {
        }
 	 
     function sortByName(repos) {
-        repos.sort(function(a,b) {
+        var sorted = repos.sort(function(a,b) {
         return a.name - b.name;
        });
+
+        return sorted;
     }
 
     function sortByDate(repos) {
         var sorted = repos.sort(function(a,b) {
         return a.updated_at > b.updated_at;
        });
+
         return sorted;
     }
     
