@@ -39,6 +39,8 @@ jQuery.fn.loadRepositories = function(username) {
         });
     };
 
+    console_log(fetchuser);
+
     if(Array.isArray(username)){
         username.each(function(u) {
            fetchuser(u);
