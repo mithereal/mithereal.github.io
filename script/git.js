@@ -11,9 +11,9 @@ jQuery.fn.loadRepositories = function(username) {
     $.githubUser(username, function(data) {
 		
         var repos = data.data; // JSON Parsing
-      console.log(repos);
-       // sortByName(repos);    
-     
+
+        sortByDate(repos);
+
         var list = $('<div/>');
         target.empty().append(list);
          if(repos.message == "API rate limit exceeded for 68.231.163.171. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)")
@@ -51,10 +51,16 @@ jQuery.fn.loadRepositories = function(username) {
         return a.name - b.name;
        });
     }
+
+    function sortByDate(repos) {
+        repos.sort(function(a,b) {
+        return a.updated_at > b.updated_at;
+       });
+    }
     
     function codewall($data){
 	lang=unique($data);
-	console.log(lang.length);
+
 	var lastwidth=0;
 	var maxwidth=100;
     for (var i=0;i<lang.length;i++)
