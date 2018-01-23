@@ -56,7 +56,7 @@ jQuery.fn.loadRepositories = function(username) {
 
     function sortByDate(repos) {
         var sorted = repos.sort(function(a,b) {
-        return a.updated_at > b.updated_at;
+        return a.updated_at < b.updated_at;
        });
 
         return sorted;
