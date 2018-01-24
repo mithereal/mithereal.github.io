@@ -9,6 +9,7 @@ jQuery.fn.loadRepositories = function(username) {
      
     var target = this;
     var repositories = new Array();
+    var languages = new Array();
 
     // if(Array.isArray(username)){
     //     username.each(function(u) {
@@ -32,6 +33,7 @@ jQuery.fn.loadRepositories = function(username) {
 
         target.empty().append(list);
 
+        console.log(repos.message);
 
         if(repos.message == "API rate limit exceeded for 68.231.163.171. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)")
         {
@@ -43,7 +45,7 @@ jQuery.fn.loadRepositories = function(username) {
                 if (this.name != (username.toLowerCase()+'.github.com')) {
                     list.append('');
                     list.append('<div class="card"><div><a href="'+ (this.homepage?this.homepage:this.html_url) +'">' + this.name + '</a> <em>'+(this.language?('('+this.language+')'):'')+'</em></div><div>' + this.description +'</div></div>');
-                    repositories.push(this.language);
+                    languages.push(this.language);
                 }
             });
 
