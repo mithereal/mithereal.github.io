@@ -24,7 +24,8 @@ jQuery.fn.loadRepositories = function(username) {
 
         var repos = data.data; // JSON Parsing
 
-        // var sorted_repos = sortByDate(repos);
+         var sorted_repos = sortByDate(repos);
+        sorted_repos = sorted_repos.reverse();
 
         var list = $('<div/>');
 
@@ -35,7 +36,7 @@ jQuery.fn.loadRepositories = function(username) {
             list.append('');
             list.append('<div class="card">Oops there was an error Please go to the <a href="https://github.com/mithereal?tab=repositories">Repositories</a> Instead<div></div>');
         }else{
-            $(repos).each(function() {
+            $(sorted_repos).each(function() {
 
                 if (this.name != (username.toLowerCase()+'.github.com')) {
                     list.append('');
