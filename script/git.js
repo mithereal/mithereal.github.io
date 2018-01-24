@@ -1,4 +1,4 @@
-jQuery.githubUser = function (username, callback) {
+jQuery.githubUserInit = function (username, callback) {
 
     jQuery.getJSON('https://api.github.com/users/' + username + '/repos?callback=?', callback);
 
@@ -9,6 +9,7 @@ jQuery.fn.loadRepositories = function (username) {
 
     var target = this;
     var languages = new Array();
+    var repositories = new Array();
 
 
     // if(Array.isArray(username)){
@@ -21,11 +22,10 @@ jQuery.fn.loadRepositories = function (username) {
     //
     // }
 
-    var repo = $.githubUser(username, function (data) {
+     $.githubUserInit(username, function (data) {
 
         var repos = data.data; // JSON Parsing
-
-
+console.log(data);
         if (repos.indexOf('documentation_url') > -1 && repos.documentation_url == "https://developer.github.com/v3/#rate-limiting") {
 
         } else {
@@ -34,6 +34,7 @@ jQuery.fn.loadRepositories = function (username) {
                 if (this.name != (username.toLowerCase() + '.github.com')) {
 
                     languages.push(this.language);
+                    repositories.push(this);
                 }
             });
 
@@ -42,7 +43,7 @@ jQuery.fn.loadRepositories = function (username) {
     });
 
     show_language_ribbon(languages);
-    show_wall(repo);
+    show_wall(repositories);
 
     function unique(arr) {
         var uniques = [];
@@ -54,11 +55,9 @@ jQuery.fn.loadRepositories = function (username) {
 
     function show_wall(repos) {
 
-
         var list = $('<div/>');
 
         target.empty().append(list);
-
 
         if (repos.documentation_url == "https://developer.github.com/v3/#rate-limiting") {
             list.append('');
