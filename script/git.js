@@ -46,21 +46,21 @@ jQuery.fn.loadRepositories = function(username) {
             });
 
             return repositories;
-        }// Misc Error Handling Goes Here
+        }
     });
 
     show_wall(repositories);
 
-    function unique(array){
+    function unique(data){
        var uniques = [];
-       $.each(array, function(i, el){
+       $.each(data, function(i, el){
        if($.inArray(el, uniques) === -1) uniques.push(el);
        });
        return uniques;
        }
 
-    function sortByDate(repos) {
-        var sorted = repos.sort(function(a,b) {
+    function sortByDate(data) {
+        var sorted = data.sort(function(a,b) {
         return a.updated_at > b.updated_at;
        });
 
@@ -69,16 +69,14 @@ jQuery.fn.loadRepositories = function(username) {
     
     function show_wall(data){
 
-	var repository=data;
-        console.log(repository);
 	var lastwidth=0;
 	var maxwidth=100;
 
-    for (var i=0;i<repository.length;i++)
+    for (var i=0;i<data.length;i++)
     {
-		if(repository[i] === null)
+		if(data[i] === null)
 		{
-			repository[i] = "Bash";
+            data[i] = "Bash";
 		}
 
 	var width = Math.floor(Math.random() * maxwidth);
@@ -109,9 +107,9 @@ jQuery.fn.loadRepositories = function(username) {
 	}
 	
 	if(i%2 ==0){
-    $('#section0-runner').append('<div style="width:'+width+'px" class="show_wall vertical">'+repository[i]+'</div>');
+    $('#section0-runner').append('<div style="width:'+width+'px" class="show_wall vertical">'+data[i]+'</div>');
 	}else{
-	$('#section0-runner').append('<div style="width:'+width+'px" class="show_wall vertical">'+repository[i]+'</div>');
+	$('#section0-runner').append('<div style="width:'+width+'px" class="show_wall vertical">'+data[i]+'</div>');
 	}
 	lastwidth=width;
     }
