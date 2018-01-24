@@ -60,19 +60,19 @@ jQuery.fn.loadRepositories = function (username) {
 
     function show_wall(repos) {
 
-        var list = $('<div/>');
+        var html = $('<div/>');
 
-        target.empty().append(list);
+        target.empty().append(html);
 
         if (repos.documentation_url == "https://developer.github.com/v3/#rate-limiting") {
-            list.append('');
-            list.append('<div class="card">This IP has been Rate Limited by Github. <br/> Please Click  the <a href="https://github.com/mithereal?tab=repositories">Repositories Link</a> Instead<div></div>');
+            html.append('');
+            html.append('<div class="card">This IP has been Rate Limited by Github. <br/> Please Click  the <a href="https://github.com/mithereal?tab=repositories">Repositories Link</a> Instead<div></div>');
         } else {
             $(repos).each(function () {
 
                 if (this.name != (username.toLowerCase() + '.github.com')) {
-                    list.append('');
-                    list.append('<div class="card"><div><a href="' + (this.homepage ? this.homepage : this.html_url) + '">' + this.name + '</a> <em>' + (this.language ? ('(' + this.language + ')') : '') + '</em></div><div>' + this.description + '</div></div>');
+                    html.append('');
+                    html.append('<div class="card"><div><a href="' + (this.homepage ? this.homepage : this.html_url) + '">' + this.name + '</a> <em>' + (this.language ? ('(' + this.language + ')') : '') + '</em></div><div>' + this.description + '</div></div>');
 
                 }
             });
