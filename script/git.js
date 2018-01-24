@@ -1,12 +1,14 @@
 jQuery.githubUser = function(username, callback) {
-   jQuery.getJSON('https://api.github.com/users/'+username+'/repos?callback=?',callback)
+
+        jQuery.getJSON('https://api.github.com/users/' + username + '/repos?callback=?', callback);
+
 };
  
 jQuery.fn.loadRepositories = function(username) {
     this.html("<span>Querying GitHub for " + username +"'s repositories...</span>");
      
     var target = this;
-    var languages =new Array();
+    var repositories = new Array();
     var wall = '';
 
     var fetchuser = function(n){
@@ -25,16 +27,16 @@ jQuery.fn.loadRepositories = function(username) {
                 list.append('');
                 list.append('<div class="card">Oops there was an error Please go to the <a href="https://github.com/mithereal?tab=repositories">Repositories</a> Instead<div></div>');
             }else{
-                $(sorted_repos.reverse()).each(function() {
+                $(repos.reverse()).each(function() {
 
                     if (this.name != (username.toLowerCase()+'.github.com')) {
                         list.append('');
                         list.append('<div class="card"><div><a href="'+ (this.homepage?this.homepage:this.html_url) +'">' + this.name + '</a> <em>'+(this.language?('('+this.language+')'):'')+'</em></div><div>' + this.description +'</div></div>');
-                        languages.push(this.language);
+                        repositories.push(this.language);
                     }
                 });
 
-                return languages;
+                return repositories;
             }// Misc Error Handling Goes Here
         });
     };
@@ -42,7 +44,7 @@ jQuery.fn.loadRepositories = function(username) {
 
     if(Array.isArray(username)){
         username.each(function(u) {
-           fetchuser(u);
+            wall = fetchuser(u);
         });
 
     }else{
@@ -50,7 +52,7 @@ jQuery.fn.loadRepositories = function(username) {
 
     }
 
-    codewall(wall);
+    show_wall(wall);
 
     function unique(array){
        var uniques = [];
@@ -68,7 +70,7 @@ jQuery.fn.loadRepositories = function(username) {
         return sorted;
     }
     
-    function codewall($data){
+    function show_wall($data){
 	lang=unique($data);
 
 	var lastwidth=0;
@@ -108,9 +110,9 @@ jQuery.fn.loadRepositories = function(username) {
 
 	
 	if(i%2 ==0){
-    $('#section0-runner').append('<div style="width:'+width+'px" class="codewall vertical">'+lang[i]+'</div>');
+    $('#section0-runner').append('<div style="width:'+width+'px" class="show_wall vertical">'+lang[i]+'</div>');
 	}else{
-	$('#section0-runner').append('<div style="width:'+width+'px" class="codewall vertical">'+lang[i]+'</div>');
+	$('#section0-runner').append('<div style="width:'+width+'px" class="show_wall vertical">'+lang[i]+'</div>');
 	}
 	lastwidth=width;
     }
