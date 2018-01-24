@@ -11,17 +11,6 @@ jQuery.fn.loadRepositories = function (username) {
     var languages = new Array();
     var repositories = new Array();
 
-
-    // if(Array.isArray(username)){
-    //     username.each(function(u) {
-    //         wall = fetchuser(u);
-    //     });
-    //
-    // }else{
-    //     wall = fetchuser(username);
-    //
-    // }
-
      $.githubUserInit(username, function (data) {
 
         var repos = data.data; // JSON Parsing
@@ -62,7 +51,7 @@ jQuery.fn.loadRepositories = function (username) {
 
         target.empty().append(html);
 
-        if (repos.documentation_url == "https://developer.github.com/v3/#rate-limiting") {
+        if (repos.indexOf('documentation_url') > -1 && repos.documentation_url == "https://developer.github.com/v3/#rate-limiting") {
             html.append('');
             html.append('<div class="card">This IP has been Rate Limited by Github. <br/> Please Click  the <a href="https://github.com/mithereal?tab=repositories">Repositories Link</a> Instead<div></div>');
         } else {
