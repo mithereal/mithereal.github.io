@@ -35,10 +35,10 @@ jQuery.fn.loadRepositories = function(username) {
 
         console.log(repos);
 
-        if(repos.message == "API rate limit exceeded for 68.231.163.171. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)")
+        if(repos.documentation_url == "https://developer.github.com/v3/#rate-limiting")
         {
             list.append('');
-            list.append('<div class="card">Oops there was an error Please go to the <a href="https://github.com/mithereal?tab=repositories">Repositories</a> Instead<div></div>');
+            list.append('<div class="card">This IP has been rate-limited by Github. Please Click  the <a href="https://github.com/mithereal?tab=repositories">Repositories Link</a> Instead<div></div>');
         }else{
             $(sorted_repos).each(function() {
 
