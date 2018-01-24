@@ -68,16 +68,16 @@ jQuery.fn.loadRepositories = function(username) {
         return sorted;
     }
     
-    function show_wall(arr){
+    function show_wall(x){
 
 	var lastwidth=0;
 	var maxwidth=100;
 
-    for (var i=0;i<arr.length;i++)
+    for (var i=0;i<x.length;i++)
     {
-		if(data[i] === null)
+		if(x[i] === null)
 		{
-            data[i] = "Bash";
+            x[i] = "Bash";
 		}
 
 	var width = Math.floor(Math.random() * maxwidth);
@@ -107,7 +107,7 @@ jQuery.fn.loadRepositories = function(username) {
 		}
 	}
 console.log(arr[i]);
-	$('#section0-runner').append('<div style="width:'+width+'px" class="show_wall vertical">'+arr[i]+'</div>');
+	$('#section0-runner').append('<div style="width:'+width+'px" class="show_wall vertical">'+x[i]+'</div>');
 
 	lastwidth=width;
     }
