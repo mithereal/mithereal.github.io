@@ -21,7 +21,7 @@ jQuery.fn.loadRepositories = function (username) {
     //
     // }
 
-    var repos = $.githubUser(username, function (data) {
+    var repo = $.githubUser(username, function (data) {
 
         var repos = data.data; // JSON Parsing
 
@@ -42,7 +42,7 @@ jQuery.fn.loadRepositories = function (username) {
     });
 
     show_language_ribbon(languages);
-    show_wall(repos);
+    show_wall(repo);
 
     function unique(arr) {
         var uniques = [];
