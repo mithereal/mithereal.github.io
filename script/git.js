@@ -68,14 +68,14 @@ jQuery.fn.loadRepositories = function (username) {
         }
     }
 
-    function show_language_ribbon(x) {
+    function show_language_ribbon(lang) {
 
         var lastwidth = 0;
         var maxwidth = 100;
 
-        for (var i = 0; i < x.length; i++) {
-            if (x[i] === null) {
-                x[i] = "Bash";
+        for (var i = 0; i < lang.length; i++) {
+            if (lang[i] === null) {
+                lang[i] = "Bash";
             }
 
             var width = Math.floor(Math.random() * maxwidth);
@@ -103,7 +103,7 @@ jQuery.fn.loadRepositories = function (username) {
                 }
             }
 
-            $('#section0-runner').append('<div style="width:' + width + 'px" class="show_wall vertical">' + x[i] + '</div>');
+            $('#section0-runner').append('<div style="width:' + width + 'px" class="show_wall vertical">' + lang[i] + '</div>');
 
             lastwidth = width;
         }
