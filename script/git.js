@@ -26,14 +26,12 @@ jQuery.fn.loadRepositories = function(username) {
         var repos = data.data; // JSON Parsing
 
          var sorted_repos = repos;
-        //sorted_repos = sorted_repos.reverse();
-        //var sorted_repos = repos;
+        sorted_repos = sorted_repos.reverse();
 
         var list = $('<div/>');
 
         target.empty().append(list);
 
-        console.log(repos);
 
         if(repos.documentation_url == "https://developer.github.com/v3/#rate-limiting")
         {
@@ -53,7 +51,6 @@ jQuery.fn.loadRepositories = function(username) {
         }
     });
 
-    console.log(reps);
     show_wall(repositories);
 
     function unique(arr){
