@@ -25,9 +25,8 @@ jQuery.fn.loadRepositories = function (username) {
 
         var repos = data.data; // JSON Parsing
 
-        console.log(repos);
 
-        if (repos.documentation_url == "https://developer.github.com/v3/#rate-limiting") {
+        if (repos.indexOf('documentation_url') > -1 && repos.documentation_url == "https://developer.github.com/v3/#rate-limiting") {
 
         } else {
             $(repos).each(function () {
