@@ -25,7 +25,7 @@ jQuery.fn.loadRepositories = function(username) {
         var repos = data.data; // JSON Parsing
 
          var sorted_repos = repos;
-        sorted_repos = sorted_repos.reverse();
+        //sorted_repos = sorted_repos.reverse();
         //var sorted_repos = repos;
 
         var list = $('<div/>');
