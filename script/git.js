@@ -106,12 +106,9 @@ jQuery.fn.loadRepositories = function(username) {
 		width = width - diff; 
 		}
 	}
-	
-	if(i%2 ==0){
-    $('#section0-runner').append('<div style="width:'+width+'px" class="show_wall vertical">'+arr[i]+'</div>');
-	}else{
+
 	$('#section0-runner').append('<div style="width:'+width+'px" class="show_wall vertical">'+arr[i]+'</div>');
-	}
+
 	lastwidth=width;
     }
     
