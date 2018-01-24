@@ -59,13 +59,7 @@ jQuery.fn.loadRepositories = function(username) {
        return uniques;
        }
 
-    function sortByDate(arr) {
-        var sorted = arr.sort(function(a,b) {
-        return a.updated_at > b.updated_at;
-       });
 
-        return sorted;
-    }
     
     function show_wall(arr){
 
