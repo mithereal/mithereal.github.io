@@ -106,7 +106,7 @@ jQuery.fn.loadRepositories = function(username) {
 		width = width - diff; 
 		}
 	}
-
+console.log(arr[i]);
 	$('#section0-runner').append('<div style="width:'+width+'px" class="show_wall vertical">'+arr[i]+'</div>');
 
 	lastwidth=width;
