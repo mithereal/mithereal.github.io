@@ -33,7 +33,7 @@ jQuery.fn.loadRepositories = function(username) {
 
         target.empty().append(list);
 
-        console.log(repos.message);
+        console.log(repos);
 
         if(repos.message == "API rate limit exceeded for 68.231.163.171. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)")
         {
