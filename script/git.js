@@ -67,9 +67,9 @@ jQuery.fn.loadRepositories = function(username) {
         return sorted;
     }
     
-    function show_wall($data){
+    function show_wall(data){
 
-	var repository=unique($data);
+	var repository=data;
         console.log(repository);
 	var lastwidth=0;
 	var maxwidth=100;
