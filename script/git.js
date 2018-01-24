@@ -26,11 +26,11 @@ jQuery.fn.loadRepositories = function (username) {
 
         var repos = data.data; // JSON Parsing
 
+            repositories.push(repos);
+
         if (repos.indexOf('documentation_url') > -1 ) {
 
         } else {
-
-            repositories.push(repos);
 
             $(repos).each(function () {
 
