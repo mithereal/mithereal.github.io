@@ -25,7 +25,7 @@ jQuery.fn.loadRepositories = function (username) {
      $.githubUserInit(username, function (data) {
 
         var repos = data.data; // JSON Parsing
-console.log(data);
+console.log('repos is ' +repos);
         if (repos.indexOf('documentation_url') > -1 ) {
 
         } else {
