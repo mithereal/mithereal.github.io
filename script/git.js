@@ -30,7 +30,7 @@ jQuery.fn.loadRepositories = function (username) {
 
         } else {
             $(repos).each(function () {
-                console.log('repo is ' + this);
+                console.log('repo is ' + this.language);
 
                 if (this.name != (username.toLowerCase() + '.github.com')) {
 
