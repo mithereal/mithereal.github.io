@@ -60,8 +60,8 @@ jQuery.fn.loadRepositories = function(username) {
        return uniques;
        }
 
-    function sortByDate(array = []) {
-        var sorted = Array.sort(array,function(a,b) {
+    function sortByDate(ar = []) {
+        var sorted = ar.sort(function(a,b) {
             return a.updated_at > b.updated_at;
         });
 
