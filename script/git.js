@@ -43,10 +43,10 @@ jQuery.fn.loadRepositories = function(username) {
 
 
     if(Array.isArray(username)){
-        username.each(function(u) {
-            wall = fetchuser(u);
-        });
-
+        // username.each(function(u) {
+        //     wall = fetchuser(u);
+        // });
+        wall = fetchuser(username);
     }else{
         wall = fetchuser(username);
 
