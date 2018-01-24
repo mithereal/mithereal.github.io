@@ -46,9 +46,7 @@ jQuery.fn.loadRepositories = function (username) {
     });
 
     show_language_ribbon(unique(languages));
-    //show_wall(repositories);
-    console.log('lang is ' +languages);
-    console.log('repos is ' +repositories);
+    show_wall(repositories);
 
     function unique(arr) {
         var uniques = [];
