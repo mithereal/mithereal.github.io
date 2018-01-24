@@ -51,6 +51,7 @@ jQuery.fn.loadRepositories = function(username) {
         }
     });
 
+    console.log(repositories);
     show_wall(repositories);
 
     function unique(arr){
@@ -60,8 +61,6 @@ jQuery.fn.loadRepositories = function(username) {
        });
        return uniques;
        }
-
-
 
 
     function show_wall(x){
