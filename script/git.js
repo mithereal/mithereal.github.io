@@ -11,36 +11,6 @@ jQuery.fn.loadRepositories = function(username) {
     var repositories = new Array();
     var wall = '';
 
-    var fetchuser = function(n){
-       return $.githubUser(n, function(data) {
-
-            var repos = data.data; // JSON Parsing
-
-            var sorted_repos = sortByDate(repos);
-
-            var list = $('<div/>');
-
-            target.empty().append(list);
-
-            if(repos.message == "API rate limit exceeded for 68.231.163.171. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)")
-            {
-                list.append('');
-                list.append('<div class="card">Oops there was an error Please go to the <a href="https://github.com/mithereal?tab=repositories">Repositories</a> Instead<div></div>');
-            }else{
-                $(repos.reverse()).each(function() {
-
-                    if (this.name != (username.toLowerCase()+'.github.com')) {
-                        list.append('');
-                        list.append('<div class="card"><div><a href="'+ (this.homepage?this.homepage:this.html_url) +'">' + this.name + '</a> <em>'+(this.language?('('+this.language+')'):'')+'</em></div><div>' + this.description +'</div></div>');
-                        repositories.push(this.language);
-                    }
-                });
-
-                return repositories;
-            }// Misc Error Handling Goes Here
-        });
-    };
-
 
     // if(Array.isArray(username)){
     //     username.each(function(u) {
@@ -52,7 +22,33 @@ jQuery.fn.loadRepositories = function(username) {
     //
     // }
 
-    wall = fetchuser(username);
+    wall = $.githubUser(username, function(data) {
+
+        var repos = data.data; // JSON Parsing
+
+        var sorted_repos = sortByDate(repos);
+
+        var list = $('<div/>');
+
+        target.empty().append(list);
+
+        if(repos.message == "API rate limit exceeded for 68.231.163.171. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)")
+        {
+            list.append('');
+            list.append('<div class="card">Oops there was an error Please go to the <a href="https://github.com/mithereal?tab=repositories">Repositories</a> Instead<div></div>');
+        }else{
+            $(repos.reverse()).each(function() {
+
+                if (this.name != (username.toLowerCase()+'.github.com')) {
+                    list.append('');
+                    list.append('<div class="card"><div><a href="'+ (this.homepage?this.homepage:this.html_url) +'">' + this.name + '</a> <em>'+(this.language?('('+this.language+')'):'')+'</em></div><div>' + this.description +'</div></div>');
+                    repositories.push(this.language);
+                }
+            });
+
+            return repositories;
+        }// Misc Error Handling Goes Here
+    });
 
     show_wall(wall);
 
