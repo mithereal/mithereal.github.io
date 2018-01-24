@@ -42,15 +42,17 @@ jQuery.fn.loadRepositories = function(username) {
     };
 
 
-    if(Array.isArray(username)){
-        // username.each(function(u) {
-        //     wall = fetchuser(u);
-        // });
-        wall = fetchuser(username);
-    }else{
-        wall = fetchuser(username);
+    // if(Array.isArray(username)){
+    //     username.each(function(u) {
+    //         wall = fetchuser(u);
+    //     });
+    //
+    // }else{
+    //     wall = fetchuser(username);
+    //
+    // }
 
-    }
+    wall = fetchuser(username);
 
     show_wall(wall);
 
