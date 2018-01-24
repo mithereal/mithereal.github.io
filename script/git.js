@@ -51,28 +51,28 @@ jQuery.fn.loadRepositories = function(username) {
 
     show_wall(repositories);
 
-    function unique(data){
+    function unique(arr){
        var uniques = [];
-       $.each(data, function(i, el){
+       $.each(arr, function(i, el){
        if($.inArray(el, uniques) === -1) uniques.push(el);
        });
        return uniques;
        }
 
-    function sortByDate(data) {
-        var sorted = data.sort(function(a,b) {
+    function sortByDate(arr) {
+        var sorted = arr.sort(function(a,b) {
         return a.updated_at > b.updated_at;
        });
 
         return sorted;
     }
     
-    function show_wall(data){
+    function show_wall(arr){
 
 	var lastwidth=0;
 	var maxwidth=100;
 
-    for (var i=0;i<data.length;i++)
+    for (var i=0;i<arr.length;i++)
     {
 		if(data[i] === null)
 		{
@@ -107,9 +107,9 @@ jQuery.fn.loadRepositories = function(username) {
 	}
 	
 	if(i%2 ==0){
-    $('#section0-runner').append('<div style="width:'+width+'px" class="show_wall vertical">'+data[i]+'</div>');
+    $('#section0-runner').append('<div style="width:'+width+'px" class="show_wall vertical">'+arr[i]+'</div>');
 	}else{
-	$('#section0-runner').append('<div style="width:'+width+'px" class="show_wall vertical">'+data[i]+'</div>');
+	$('#section0-runner').append('<div style="width:'+width+'px" class="show_wall vertical">'+arr[i]+'</div>');
 	}
 	lastwidth=width;
     }
