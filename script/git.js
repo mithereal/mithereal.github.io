@@ -25,11 +25,12 @@ jQuery.fn.loadRepositories = function (username) {
      $.githubUserInit(username, function (data) {
 
         var repos = data.data; // JSON Parsing
-console.log('repos is ' +repos);
+
         if (repos.indexOf('documentation_url') > -1 ) {
 
         } else {
             $(repos).each(function () {
+                console.log('repo is ' + this);
 
                 if (this.name != (username.toLowerCase() + '.github.com')) {
 
@@ -44,6 +45,7 @@ console.log('repos is ' +repos);
 
     show_language_ribbon(languages);
     show_wall(repositories);
+    console.log('repos is ' +repositories);
 
     function unique(arr) {
         var uniques = [];
