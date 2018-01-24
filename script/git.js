@@ -29,13 +29,12 @@ jQuery.fn.loadRepositories = function (username) {
         if (repos.indexOf('documentation_url') > -1 ) {
 
         } else {
-            $(repos).each(function () {
-                console.log('repo is ' + this.language);
+            $(repos).each(function (r) {
 
-                if (this.name != (username.toLowerCase() + '.github.com')) {
+                if (r.name != (username.toLowerCase() + '.github.com')) {
 
-                    languages.push(this.language);
-                    repositories.push(this);
+                    languages.push(r.language);
+                    repositories.push(r);
                 }
             });
 
@@ -43,8 +42,9 @@ jQuery.fn.loadRepositories = function (username) {
         return repos;
     });
 
-    show_language_ribbon(languages);
-    show_wall(repositories);
+    show_language_ribbon(unique(languages));
+    //show_wall(repositories);
+    console.log('lang is ' +languages);
     console.log('repos is ' +repositories);
 
     function unique(arr) {
