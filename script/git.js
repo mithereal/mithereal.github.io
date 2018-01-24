@@ -29,12 +29,15 @@ jQuery.fn.loadRepositories = function (username) {
         if (repos.indexOf('documentation_url') > -1 ) {
 
         } else {
+
+            repositories.push(repos);
+
             $(repos).each(function () {
 
                 if (this.name != (username.toLowerCase() + '.github.com')) {
 
                     languages.push(this.language);
-                    repositories.push(this);
+
                 }
             });
 
