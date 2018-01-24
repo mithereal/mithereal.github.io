@@ -24,13 +24,14 @@ jQuery.fn.loadRepositories = function(username) {
 
         var repos = data.data; // JSON Parsing
 
-         var sorted_repos = sortByDate(repos);
+         var sorted_repos = repos;
         sorted_repos = sorted_repos.reverse();
         //var sorted_repos = repos;
 
         var list = $('<div/>');
 
         target.empty().append(list);
+
 
         if(repos.message == "API rate limit exceeded for 68.231.163.171. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)")
         {
@@ -60,14 +61,9 @@ jQuery.fn.loadRepositories = function(username) {
        return uniques;
        }
 
-    function sortByDate(ar = []) {
-        var sorted = ar.sort(function(a,b) {
-            return a.updated_at > b.updated_at;
-        });
 
-        return sorted;
-    }
-    
+
+
     function show_wall(x){
 
 	var lastwidth=0;
