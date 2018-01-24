@@ -38,7 +38,7 @@ jQuery.fn.loadRepositories = function(username) {
         if(repos.documentation_url == "https://developer.github.com/v3/#rate-limiting")
         {
             list.append('');
-            list.append('<div class="card">This IP has been Rate Limited by Github. Please Click  the <a href="https://github.com/mithereal?tab=repositories">Repositories Link</a> Instead<div></div>');
+            list.append('<div class="card">This IP has been Rate Limited by Github. <br/> Please Click  the <a href="https://github.com/mithereal?tab=repositories">Repositories Link</a> Instead<div></div>');
         }else{
             $(sorted_repos).each(function() {
 
