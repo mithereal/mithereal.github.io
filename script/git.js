@@ -9,8 +9,6 @@ jQuery.fn.loadRepositories = function(username) {
      
     var target = this;
     var repositories = new Array();
-    var wall = '';
-
 
     // if(Array.isArray(username)){
     //     username.each(function(u) {
@@ -22,11 +20,11 @@ jQuery.fn.loadRepositories = function(username) {
     //
     // }
 
-    wall = $.githubUser(username, function(data) {
+    $.githubUser(username, function(data) {
 
         var repos = data.data; // JSON Parsing
 
-        var sorted_repos = sortByDate(repos);
+        // var sorted_repos = sortByDate(repos);
 
         var list = $('<div/>');
 
@@ -37,7 +35,7 @@ jQuery.fn.loadRepositories = function(username) {
             list.append('');
             list.append('<div class="card">Oops there was an error Please go to the <a href="https://github.com/mithereal?tab=repositories">Repositories</a> Instead<div></div>');
         }else{
-            $(repos.reverse()).each(function() {
+            $(repos).each(function() {
 
                 if (this.name != (username.toLowerCase()+'.github.com')) {
                     list.append('');
@@ -50,7 +48,7 @@ jQuery.fn.loadRepositories = function(username) {
         }// Misc Error Handling Goes Here
     });
 
-    show_wall(wall);
+    show_wall(repositories);
 
     function unique(array){
        var uniques = [];
@@ -69,17 +67,20 @@ jQuery.fn.loadRepositories = function(username) {
     }
     
     function show_wall($data){
-	lang=unique($data);
+	var repository=unique($data);
 
 	var lastwidth=0;
 	var maxwidth=100;
-    for (var i=0;i<lang.length;i++)
+
+    for (var i=0;i<repository.length;i++)
     {
-		if(lang[i] === null)
+		if(repository[i] === null)
 		{
-			lang[i] = "Bash";
+			repository[i] = "Bash";
 		}
+
 	var width = Math.floor(Math.random() * maxwidth);
+
 	if(width+10 >= lastwidth)
 	{
 		var diff=width - lastwidth;
@@ -103,14 +104,12 @@ jQuery.fn.loadRepositories = function(username) {
 		}else{
 		width = width - diff; 
 		}
-		
 	}
-
 	
 	if(i%2 ==0){
-    $('#section0-runner').append('<div style="width:'+width+'px" class="show_wall vertical">'+lang[i]+'</div>');
+    $('#section0-runner').append('<div style="width:'+width+'px" class="show_wall vertical">'+repository[i]+'</div>');
 	}else{
-	$('#section0-runner').append('<div style="width:'+width+'px" class="show_wall vertical">'+lang[i]+'</div>');
+	$('#section0-runner').append('<div style="width:'+width+'px" class="show_wall vertical">'+repository[i]+'</div>');
 	}
 	lastwidth=width;
     }
